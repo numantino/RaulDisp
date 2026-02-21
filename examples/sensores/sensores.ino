@@ -24,7 +24,8 @@ void setup()
   // Inicializamos el sensor de control de humedad del suelo
   sensorYL69.init(PIN_ANALOGICO);
   // Inicializamos el sensor de luminosidad
-  sensorLDR.init(PIN_ANALOGICO);
+  // TODO solo podemos tener uno conectado al pin analogico
+  // sensorLDR.init(PIN_ANALOGICO);
 }
 
 void loop()
@@ -62,9 +63,12 @@ String paginaPrincipal()
   html += "</div>";
 
   // Sensor 3: LDR
+  /*
+   * TODO descomentar esto si se quiere usar
   html += "<div class='card'>";
   html += sensorLDR.toHtmlContent(sensorLDR.lecturaNivelLuz(sensorLDR.lecturaNormal()));
   html += "</div>";
+  */
 
   html += "</div>"; // grid
   html += "</div>"; // container

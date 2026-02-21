@@ -3,22 +3,25 @@
  */
 #pragma once
 #include <Arduino.h>
+#include "NivelAgua.hpp"
 
-// Tiempo default (Delay 20 sec.)
-const int T_DEFAULT = 7000;
+// Tiempo default (Delay 1 minuto)
+const int T_DEFAULT = 60000;
 
 class BombaAgua {
 private:
     int timer_encendido;
     String nombre;
     int pin;
+    NivelAgua* nivel;
 
 public:
-    void init(uint8_t id);
-    void init(uint8_t id, String n, int t = T_DEFAULT);
+    void init(uint8_t id, NivelAgua* nivelPtr);
+    void init(uint8_t id, NivelAgua* nivelPtr, String n, int t = T_DEFAULT);
 
     void setTiempo(int t);
     int getTiempo();
+    int getTiempoMinutos();
     void setNombre(String n);
     String getNombre();
 

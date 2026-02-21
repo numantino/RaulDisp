@@ -67,3 +67,36 @@ String WebServerManager::readRequest(WiFiClient &client) {
   }
   return request;
 }
+
+/**
+ * Para rederigir a la pagina principal
+ */
+void WebServerManager::redirectToRoot(WiFiClient &client) {
+  client.println("HTTP/1.1 302 Found");
+  client.println("Location: /");
+  client.println("Connection: close");
+  client.println();
+}
+
+/**
+ * Para transformar correctamente el code
+ */
+String WebServerManager::urlDecode(String str) {
+  String decoded = "";
+  char temp[] = "00";
+  unsigned int len = str.length();
+
+  for (unsigned int i = 0; i < len; i++) {
+    if (str[i] == '%') {
+      temp[0] = str[i + 1];
+      temp[1] = str[i + 2];
+      decoded += char(strtol(temp, NULL, 16));
+      i += 2;
+    } else if (str[i] == '+') {
+      decoded += ' ';
+    } else {
+      decoded += str[i];
+    }
+  }
+  return decoded;
+}

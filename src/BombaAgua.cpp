@@ -3,13 +3,15 @@
 /**
  * Inicializamos la funcion
  * @param id nos indica donde esta conectado el sensor
+ * @param nivelPtr puntero al objeto que controla el nivel de agua
  * @param n nombre que que queremos poner al dispositivo
  * @param h tiempo que esta activo el BombaAgua
  */
-void BombaAgua::init(uint8_t id, String n, int t) {
+void BombaAgua::init(uint8_t id, NivelAgua* nivelPtr, String n, int t) {
     pin = id;
     timer_encendido = t;
     nombre = n;
+    nivel = nivelPtr;
     pinMode(id, OUTPUT);
     releOFF();
 }
@@ -18,9 +20,9 @@ void BombaAgua::init(uint8_t id, String n, int t) {
  * Inicializamos la funcion
  * @param id nos indica donde esta conectado el sensor
  */
-void BombaAgua::init(uint8_t id) {
+void BombaAgua::init(uint8_t id, NivelAgua* nivelPtr) {
     String nombreDef = "Bomba_" + String(id);
-    init(id, nombreDef, T_DEFAULT);
+    init(id, nivelPtr, nombreDef, T_DEFAULT);
 }
 
 /**
@@ -35,6 +37,13 @@ void BombaAgua::setTiempo(int t) {
  */
 int BombaAgua::getTiempo() {
     return timer_encendido;
+}
+
+/**
+ * @return tiempo valor del tiempo de bombeo de agua en minutos
+ */
+int BombaAgua::getTiempoMinutos() {
+    return timer_encendido / (1000 * 60);
 }
 
 /**
@@ -67,14 +76,33 @@ void BombaAgua::releOFF() {
 
 /**
  * Funcion que realiza el riego automatico segun los parametros de configuracion
+ * El tiempo de riego esta en milisegundos
  */
 void BombaAgua::riegoAutomatico() {
     Serial.print("Inicio del riego [");
     Serial.print(nombre);
-    Serial.println("]");    
-    releON();
-    delay(timer_encendido);
+    Serial.println("]");
+    Serial.print("Tiempo:");
+    Serial.println(String(timer_encendido));
 
-    releOFF();    
+    if (nivel->nivelBajo()) {
+        Serial.println("Riego cancelado: depósito vacío");
+        return;
+    }
+
+    releON();
+
+    unsigned long inicio = millis();
+    while (millis() - inicio < timer_encendido) {
+
+        if (nivel->nivelBajo()) {
+            Serial.println("Nivel bajo detectado, deteniendo riego");
+            break;
+        }
+
+        delay(100);
+    }
+
+    releOFF();
     Serial.println("Fin del riego");
 }

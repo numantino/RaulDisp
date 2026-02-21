@@ -11,4 +11,6 @@ public:
   void showPage(WiFiClient &client, String html);
   String getParam(String request, String key);
   String readRequest(WiFiClient &client);
+  void redirectToRoot(WiFiClient &client);
+  String urlDecode(String str);
 };

@@ -4,9 +4,11 @@
 
 // Constantes
 const int RELE_1 = D2;
+const int PIN_FLOTADOR = D2;
 
 // Componentes
 WebServerManager web;
+NivelAgua nivel(PIN_FLOTADOR);
 BombaAgua bombaRiego;
 
 // Variables
@@ -17,8 +19,10 @@ void setup()
   // Inicializacion logs
   Serial.begin(115200);
   web.initSTA(SSID, PWD);
+  // Flotador de nivel de agua
+  nivel.init();
   // Inicializamos el rele con el control de las bombas de agua
-  bombaRiego.init(RELE_1);
+  bombaRiego.init(RELE_1, nivel);
 }
 
 void loop()
