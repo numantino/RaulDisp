@@ -15,10 +15,6 @@ Ademas podremos usar el rele para otros dispositivos. [ver](./doc/ComponentesBas
 - **Pantalla:** Es una pantalla oled donde se puede ir escribiendo algo de infromacion, el tamaño no es muy grande. [ver](./doc/Pantalla.md)
 - **Flotador:** Este componente calcula el nivel de agua en un deposito. [ver](./doc/NivelAgua.md)
 
-### Utilidades Web
-- **Crear un punto de acceso:** Componente que crea una red interna para el tratamiento de la informacion. [ver](./doc/WebServer.md)
-- **Lot:** Para mas informacion [ver](./doc/UnPocoDeLot.md) 
-
 ### Utilidades dispositivo
 - **Ahorro de energia:** Podemos hacer que el dispositivo se apague o apague algunos de sus componentes para asi ahorrar energia. [ver](./doc/AhorroEnergia.md)
 
