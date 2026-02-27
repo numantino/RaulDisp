@@ -34,3 +34,6 @@ Este modo de ahorro permite desactivar la conexión WiFi de tipo [Station](https
 
 ## Light-Sleep
 Este modo de ahorro permite mantener la conexión WiFi de tipo [Station](https://www.esploradores.com/practica-3-station-conexion-con-access-point/),  pero reduce el consumo de energía en los momentos en los que no hay envío de información.
+
+## Ejemplos
+Se puede ver un ejemplo los proyectos ''proyectoSensorHumedad'', se esta usando el ahorro de energia y ademas la parte del lot.

@@ -6,6 +6,7 @@ private:
   WiFiServer server = WiFiServer(80);
 
 public:
+  void init(const char* ssid, const char* password, WiFiMode_t mode);
   void initSTA(const char* ssid, const char* password);
   WiFiClient getClient();
   void showPage(WiFiClient &client, String html);

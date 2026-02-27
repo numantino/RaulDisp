@@ -1,4 +1,6 @@
 # Inflarrojos
+  <img src="./img/porHacer.png" style="max-width: 200px; margin-right: 20px;">
+  
 Para hacer un seguidor de líneas el mínimo número de sensores que necesitaremos son 2. <br/>
 El robot intentará mantener la línea entra ambos, oscilando continuamente.<br/>
 Ademas es necesario usar la placa para conectar varios sensores de infrarrojos a la vez.
@@ -6,11 +8,7 @@ Ademas es necesario usar la placa para conectar varios sensores de infrarrojos a
 **Metodos** <br>
 ```CPP
   // Inicializacion del componente 
-  void init();
-
-  bool nivelAlto();
-  bool nivelBajo();
-
+ 
 ```
 
 ## El sensor
@@ -36,4 +34,4 @@ En este sensor no es necesario una fuente extra de alimentacion
 </div>
 
 ## Ejemplos
-Se puede ver un ejemplo en la carpeta ''examples/nivelAgua'', ademas esta con la informacion en pantalla.
+Se puede ver un ejemplo en la carpeta ''examples/detectarObjetos''.

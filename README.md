@@ -17,6 +17,10 @@ Ademas podremos usar el rele para otros dispositivos. [ver](./doc/ComponentesBas
 
 ### Utilidades Web
 - **Crear un punto de acceso:** Componente que crea una red interna para el tratamiento de la informacion. [ver](./doc/WebServer.md)
+- **Lot:** Para mas informacion [ver](./doc/UnPocoDeLot.md) 
+
+### Utilidades dispositivo
+- **Ahorro de energia:** Podemos hacer que el dispositivo se apague o apague algunos de sus componentes para asi ahorrar energia. [ver](./doc/AhorroEnergia.md)
 
 ## Mas sobre el modulo NodeMCU
 Más información de las conexiones de la placa en esta [página](https://programarfacil.com/podcast/nodemcu-tutorial-paso-a-paso/) <br>

@@ -11,7 +11,11 @@
 #include "NivelAgua.hpp"
 
 // web
+#include "WifiConnector.hpp"
 #include "WebServerManager.hpp"
+
+// Conector para lot
+#include "IFTTTManager.hpp"
 
 // Pantalla
 #include "Pantalla.hpp"

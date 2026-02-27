@@ -1,20 +1,25 @@
 #include "WebServerManager.hpp"
+#include "WifiConnector.hpp"
+
+/**
+ * Conexion de wifi
+ */
+void WebServerManager::init(const char* ssid, const char* password, WiFiMode_t mode) {
+  WifiConnector::connect(ssid, password, mode);
+  server.begin();
+  Serial.print("IP local modo");
+  Serial.println(mode);
+  Serial.print(": ");
+  Serial.println(WiFi.localIP());
+}
 
 /**
  * Conexion de wifi modo STA
  */
 void WebServerManager::initSTA(const char* ssid, const char* password) {
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
-  Serial.print("Conectando a WiFi: ");
-  Serial.println(ssid);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("\nWiFi conectada");
+  WifiConnector::connect(ssid, password);
   server.begin();
-  Serial.print("IP local: ");
+  Serial.print("IP local modo STA: ");
   Serial.println(WiFi.localIP());
 }
 
